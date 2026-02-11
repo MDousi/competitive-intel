@@ -19,11 +19,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
-          
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Clear npm cache (force clean install)
+        run: |
+          cd scripts
+          rm -rf node_modules
+          npm cache clean --force
+
       - name: Install dependencies
         run: |
           cd scripts
-          npm install
+          npm ci
           
       - name: Run scraper
         env:

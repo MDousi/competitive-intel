@@ -1,6 +1,15 @@
 // Load environment variables from .env file
 require('dotenv').config();
 
+// POLYFILL: Add File API for older Node.js versions or undici compatibility
+const { Blob, File } = require('buffer');
+if (typeof globalThis.File === 'undefined') {
+    globalThis.File = File;
+}
+if (typeof globalThis.Blob === 'undefined') {
+    globalThis.Blob = Blob;
+}
+
 const axios = require('axios');
 const cheerio = require('cheerio');
 const Parser = require('rss-parser');
@@ -288,7 +297,7 @@ async function scrapeBlog(blogUrl) {
             const response = await axios.get(blogUrl, {
                 timeout: 5000,
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (compatible; CompetitorBot/1.0)'
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
                 }
             });
             const $ = cheerio.load(response.data);
@@ -326,7 +335,7 @@ async function scrapeChangelog(changelogUrl) {
         const response = await axios.get(changelogUrl, {
             timeout: 5000,
             headers: {
-                'User-Agent': 'Mozilla/5.0 (compatible; CompetitorBot/1.0)'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
             }
         });
         const $ = cheerio.load(response.data);
@@ -362,7 +371,7 @@ async function scrapePricing(pricingUrl) {
         const response = await axios.get(pricingUrl, {
             timeout: 5000,
             headers: {
-                'User-Agent': 'Mozilla/5.0 (compatible; CompetitorBot/1.0)'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
             }
         });
         const $ = cheerio.load(response.data);
