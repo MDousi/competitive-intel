@@ -1,3 +1,6 @@
+// Load environment variables from .env file
+require('dotenv').config();
+
 const axios = require('axios');
 const cheerio = require('cheerio');
 const Parser = require('rss-parser');
