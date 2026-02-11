@@ -1,0 +1,18 @@
+# Environment variables
+.env
+scripts/.env
+
+# Node modules
+node_modules/
+scripts/node_modules/
+
+# Package lock files
+package-lock.json
+scripts/package-lock.json
+
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/

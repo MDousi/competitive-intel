@@ -1,0 +1,291 @@
+{
+  "lastUpdated": "2026-02-11T13:25:08.899Z",
+  "competitors": [
+    {
+      "name": "Zeno",
+      "country": "NL",
+      "website": "https://zeno.legal",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Harvey",
+      "country": "UK",
+      "website": "https://harvey.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Juro",
+      "country": "UK",
+      "website": "https://juro.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Doctrine",
+      "country": "FR",
+      "website": "https://doctrine.fr",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "LegalMike",
+      "country": "NL",
+      "website": "https://legalmike.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Robin AI",
+      "country": "UK",
+      "website": "https://robinai.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Luminance",
+      "country": "UK",
+      "website": "https://luminance.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "LegalFly",
+      "country": "NL",
+      "website": "https://legalfly.nl",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "LegalMind",
+      "country": "NL",
+      "website": "https://legalmind.io",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Legaltree",
+      "country": "NL",
+      "website": "https://legaltree.nl",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Beele.ai",
+      "country": "NL",
+      "website": "https://beele.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "LegalUp",
+      "country": "NL",
+      "website": "https://legalup.nl",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Precisely",
+      "country": "SE",
+      "website": "https://precisely.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "LexMachina",
+      "country": "DE",
+      "website": "https://lexmachina.de",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Legisway",
+      "country": "BE",
+      "website": "https://legisway.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Ironclad",
+      "country": "US",
+      "website": "https://ironcladapp.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "LawGeex",
+      "country": "IL",
+      "website": "https://lawgeex.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Conga",
+      "country": "US",
+      "website": "https://conga.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Wolters Kluwer Legal",
+      "country": "NL",
+      "website": "https://wolterskluwer.com/legal",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Della",
+      "country": "NL",
+      "website": "https://della.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Litigate",
+      "country": "ES",
+      "website": "https://litigate.es",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Everlaw",
+      "country": "US",
+      "website": "https://everlaw.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [],
+        "pricing": [],
+        "news": []
+      },
+      "roadmap": []
+    }
+  ]
+}
