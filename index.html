@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Intelligence Dashboard - Andri.ai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to right, #e5e7eb 0%, #e5e7eb 65%, #f3e8ff 80%, #e9d5ff 100%);
+            color: #111827;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 40px 48px;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            margin-bottom: 40px;
+            border-left: 8px solid #7c3aed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            color: #111827;
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .andri-badge {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.4);
+        }
+
+        .header-subtitle {
+            color: #6b7280;
+            font-size: 17px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .last-refresh {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(249, 250, 251, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(229, 231, 235, 0.8);
+            position: relative;
+            z-index: 1;
+        }
+
+        .refresh-indicator {
+            width: 12px;
+            height: 12px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .refresh-text {
+            font-size: 15px;
+            color: #4b5563;
+        }
+
+        .refresh-time {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .next-refresh {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-left: 16px;
+        }
+
+        .manual-refresh-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.4);
+            margin-left: auto;
+        }
+
+        .manual-refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.5);
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: white;
+            padding: 8px;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: #7c3aed;
+            background: #f9fafb;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.3);
+        }
+
+        .filters-container {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 32px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #7c3aed;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .filter-chip:hover {
+            border-color: #c4b5fd;
+            background: #faf5ff;
+        }
+
+        .filter-chip.active {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border-color: #7c3aed;
+            color: white;
+            box-shadow: 0 2px 4px rgba(124, 58, 237, 0.3);
+        }
+
+        .filter-chip .count {
+            margin-left: 6px;
+            opacity: 0.7;
+            font-size: 12px;
+        }
+
+        .clear-filters {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #ef4444;
+            background: white;
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 10px;
+        }
+
+        .clear-filters:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        .results-info {
+            background: #f9fafb;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .results-count {
+            font-weight: 700;
+            color: #7c3aed;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .competitors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 28px;
+        }
+
+        .competitor-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid #e5e7eb;
+        }
+
+        .competitor-card.hidden {
+            display: none;
+        }
+
+        .competitor-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            transform: translateY(-4px) scale(1.01);
+            border-color: #c4b5fd;
+        }
+
+        .competitor-header {
+            padding: 28px;
+            border-bottom: 2px solid #f3f4f6;
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 50%, #fafafa 100%);
+        }
+
+        .competitor-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .competitor-meta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .meta-item a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+
+        .meta-item a:hover {
+            text-decoration: underline;
+        }
+
+        .meta-dot {
+            width: 4px;
+            height: 4px;
+            background: #d1d5db;
+            border-radius: 50%;
+        }
+
+        .country-badge {
+            background: #ede9fe;
+            color: #7c3aed;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .competitor-content {
+            padding: 28px;
+        }
+
+        .update-section {
+            margin-bottom: 28px;
+        }
+
+        .update-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #7c3aed;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .update-item {
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            padding: 16px 18px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 3px solid #e5e7eb;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .update-item:hover {
+            border-left-color: #7c3aed;
+            background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%);
+            box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.1);
+            transform: translateX(4px);
+        }
+
+        .update-item.clickable::after {
+            content: '→';
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7c3aed;
+            font-size: 18px;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .update-item.clickable:hover::after {
+            opacity: 1;
+            right: 14px;
+        }
+
+        .update-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+            padding-right: 24px;
+        }
+
+        .update-description {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .update-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .update-date {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .update-source {
+            font-size: 11px;
+            color: #7c3aed;
+            font-weight: 600;
+            background: #ede9fe;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .tag.twitter { background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: #1e40af; }
+        .tag.blog { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color: #92400e; }
+        .tag.feature { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); color: #166534; }
+        .tag.pricing { background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); color: #3730a3; }
+        .tag.news { background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); color: #831843; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #9ca3af;
+            background: #f9fafb;
+            border-radius: 16px;
+            grid-column: 1 / -1;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            grid-column: 1 / -1;
+        }
+
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #7c3aed;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .competitors-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <h1>Competitive Intelligence Dashboard</h1>
+                <div class="andri-badge">Andri.ai</div>
+            </div>
+            <p class="header-subtitle">🤖 Automatisch bijgewerkt elke 3 uur via 22+ bronnen</p>
+            <div class="last-refresh">
+                <div class="refresh-indicator"></div>
+                <span class="refresh-text">
+                    Laatste update: <span class="refresh-time" id="lastUpdate">Laden...</span>
+                </span>
+                <span class="next-refresh" id="nextRefresh">Volgende update over...</span>
+                <button class="manual-refresh-btn" onclick="loadData()">
+                    Data Herladen
+                </button>
+            </div>
+        </div>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchTab('all')">Alle Updates</button>
+            <button class="tab-btn" onclick="switchTab('news')">Nieuws</button>
+            <button class="tab-btn" onclick="switchTab('features')">Features</button>
+        </div>
+
+        <div class="filters-container">
+            <div class="filter-group">
+                <label class="filter-label">Land</label>
+                <div class="filter-chips" id="countryFilters"></div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Type</label>
+                <div class="filter-chips" id="typeFilters"></div>
+            </div>
+        </div>
+
+        <div class="results-info">
+            <span>Toont <span class="results-count" id="resultsCount">0</span> concurrenten</span>
+            <span id="activeFiltersText"></span>
+        </div>
+
+        <div id="allTab" class="tab-content active">
+            <div class="competitors-grid" id="grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Data laden van GitHub...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let competitorData = null;
+        let activeFilters = { countries: [], types: [] };
+
+        async function loadData() {
+            console.log('📥 Loading data...');
+            try {
+                const response = await fetch('./data/competitors.json');
+                competitorData = await response.json();
+                
+                document.getElementById('lastUpdate').textContent = 
+                    new Date(competitorData.lastUpdated).toLocaleString('nl-NL');
+                
+                setupFilters();
+                renderCompetitors();
+                calculateNextUpdate();
+            } catch (error) {
+                console.error('❌ Error loading data:', error);
+                document.getElementById('grid').innerHTML = 
+                    '<div class="empty-state">Error: Kan data niet laden. Zorg dat de scraper gedraaid heeft.</div>';
+            }
+        }
+
+        function calculateNextUpdate() {
+            const lastUpdate = new Date(competitorData.lastUpdated);
+            const nextUpdate = new Date(lastUpdate.getTime() + (3 * 60 * 60 * 1000));
+            const now = new Date();
+            const diff = nextUpdate - now;
+
+            if (diff > 0) {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('nextRefresh').textContent = 
+                    `Volgende update over ${hours}u ${minutes}m`;
+            }
+        }
+
+        function setupFilters() {
+            const countries = [...new Set(competitorData.competitors.map(c => c.country))].sort();
+            const countryFiltersEl = document.getElementById('countryFilters');
+            countryFiltersEl.innerHTML = '';
+            
+            countries.forEach(country => {
+                const count = competitorData.competitors.filter(c => c.country === country).length;
+                const chip = document.createElement('div');
+                chip.className = 'filter-chip';
+                chip.innerHTML = `${country} <span class="count">(${count})</span>`;
+                chip.onclick = () => toggleFilter('country', country, chip);
+                countryFiltersEl.appendChild(chip);
+            });
+
+            const types = ['Twitter', 'Blog', 'Features', 'Pricing', 'News'];
+            const typeFiltersEl = document.getElementById('typeFilters');
+            typeFiltersEl.innerHTML = '';
+            
+            types.forEach(type => {
+                const chip = document.createElement('div');
+                chip.className = 'filter-chip';
+                chip.textContent = type;
+                chip.onclick = () => toggleFilter('type', type.toLowerCase(), chip);
+                typeFiltersEl.appendChild(chip);
+            });
+
+            const clearBtn = document.createElement('button');
+            clearBtn.className = 'clear-filters';
+            clearBtn.textContent = 'Wis Filters';
+            clearBtn.onclick = clearFilters;
+            typeFiltersEl.appendChild(clearBtn);
+        }
+
+        function toggleFilter(filterType, value, chipElement) {
+            const filterArray = filterType === 'country' ? activeFilters.countries : activeFilters.types;
+            const index = filterArray.indexOf(value);
+            
+            if (index > -1) {
+                filterArray.splice(index, 1);
+                chipElement.classList.remove('active');
+            } else {
+                filterArray.push(value);
+                chipElement.classList.add('active');
+            }
+            
+            applyFilters();
+        }
+
+        function clearFilters() {
+            activeFilters = { countries: [], types: [] };
+            document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+            applyFilters();
+        }
+
+        function applyFilters() {
+            let visibleCount = 0;
+            document.querySelectorAll('.competitor-card').forEach(card => {
+                const country = card.dataset.country;
+                const hasTypes = JSON.parse(card.dataset.types || '[]');
+                
+                let show = true;
+                if (activeFilters.countries.length > 0) {
+                    show = activeFilters.countries.includes(country);
+                }
+                if (show && activeFilters.types.length > 0) {
+                    show = activeFilters.types.some(type => hasTypes.includes(type));
+                }
+                
+                card.classList.toggle('hidden', !show);
+                if (show) visibleCount++;
+            });
+
+            document.getElementById('resultsCount').textContent = visibleCount;
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderCompetitors(tab);
+        }
+
+        function renderCompetitors(filter = 'all') {
+            const grid = document.getElementById('grid');
+            if (!competitorData || !competitorData.competitors.length) {
+                grid.innerHTML = '<div class="empty-state">Geen data beschikbaar. Run de scraper eerst!</div>';
+                return;
+            }
+
+            const html = competitorData.competitors.map(comp => {
+                const allUpdates = [
+                    ...(comp.liveUpdates.twitter || []),
+                    ...(comp.liveUpdates.blog || []),
+                    ...(comp.liveUpdates.features || []),
+                    ...(comp.liveUpdates.pricing || []),
+                    ...(comp.liveUpdates.news || [])
+                ];
+
+                if (allUpdates.length === 0) return '';
+
+                const types = [];
+                if (comp.liveUpdates.twitter?.length) types.push('twitter');
+                if (comp.liveUpdates.blog?.length) types.push('blog');
+                if (comp.liveUpdates.features?.length) types.push('features');
+                if (comp.liveUpdates.pricing?.length) types.push('pricing');
+                if (comp.liveUpdates.news?.length) types.push('news');
+
+                const filteredUpdates = filter === 'all' ? allUpdates :
+                    filter === 'news' ? comp.liveUpdates.news || [] :
+                    filter === 'features' ? comp.liveUpdates.features || [] : allUpdates;
+
+                if (filteredUpdates.length === 0) return '';
+
+                return `
+                    <div class="competitor-card" data-country="${comp.country}" data-types='${JSON.stringify(types)}'>
+                        <div class="competitor-header">
+                            <div class="competitor-name">${comp.name}</div>
+                            <div class="competitor-meta">
+                                <span class="country-badge">${comp.country}</span>
+                                <span class="meta-dot"></span>
+                                <span class="meta-item">
+                                    <a href="${comp.website}" target="_blank">${comp.website.replace('https://', '')}</a>
+                                </span>
+                                <span class="meta-dot"></span>
+                                <span class="meta-item">${allUpdates.length} updates</span>
+                            </div>
+                        </div>
+                        <div class="competitor-content">
+                            ${filteredUpdates.map(update => `
+                                <div class="update-item clickable" onclick="window.open('${update.url}', '_blank')">
+                                    <div class="update-title">${update.title}</div>
+                                    <div class="update-description">${update.description}</div>
+                                    <div class="update-meta">
+                                        <span class="update-date">${update.date}</span>
+                                        <span class="update-source">${update.source}</span>
+                                    </div>
+                                    <span class="tag ${update.type}">${update.type}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }).filter(html => html).join('');
+
+            grid.innerHTML = html || '<div class="empty-state">Geen data voor dit filter</div>';
+            applyFilters();
+        }
+
+        // Load data on page load
+        window.addEventListener('DOMContentLoaded', loadData);
+        
+        // Refresh every minute to update "next update" timer
+        setInterval(calculateNextUpdate, 60000);
+    </script>
+</body>
+</html>
