@@ -19,11 +19,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
-          
+
+      - name: Clear npm cache
+        run: |
+          cd scripts
+          rm -rf node_modules
+          npm cache clean --force
+
       - name: Install dependencies
         run: |
           cd scripts
-          npm install
+          npm ci
           
       - name: Run scraper
         env:
