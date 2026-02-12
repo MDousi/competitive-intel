@@ -558,10 +558,14 @@ async function scrapeAll() {
 
 // Run scraper
 if (require.main === module) {
-    scrapeAll().catch(error => {
-        console.error('❌ Fatal error:', error);
-        process.exit(1);
-    });
+    scrapeAll()
+        .then(() => {
+            process.exit(0); // Explicitly exit after successful scraping
+        })
+        .catch(error => {
+            console.error('❌ Fatal error:', error);
+            process.exit(1);
+        });
 }
 
 module.exports = { scrapeAll };
