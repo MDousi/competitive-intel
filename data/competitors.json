@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-11T13:25:08.899Z",
+  "lastUpdated": "2026-02-12T09:47:25.426Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -46,7 +46,32 @@
       "website": "https://doctrine.fr",
       "liveUpdates": {
         "twitter": [],
-        "blog": [],
+        "blog": [
+          {
+            "title": "Bilan carbone Doctrine : découpler croissance et émissions.",
+            "description": "Doctrine renouvelle son bilan carbone en 2024. Résultat : des émissions en hausse (normal pour une entreprise en hyper croissance), mais une intensité carbone en baisse de 12 %. Un bilan qui illustre ",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://blog.doctrine.fr/bilan-carbone-doctrine-2024/",
+            "type": "blog"
+          },
+          {
+            "title": "Doctrine lance la traduction juridique sécurisée et intégrée pour les professionnels du droit",
+            "description": "Doctrine lance la traduction juridique sécurisée et intégrée pour les professionnels du droit, une alternative de confiance aux outils en ligne grand public.",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://blog.doctrine.fr/doctrine-lance-la-traduction-juridique-securisee-et-integree-pour-les-professionnels-du-droit/",
+            "type": "blog"
+          },
+          {
+            "title": "L’Encyclopédie fiscale s’enrichit d’un nouveau volet dédié au contrôle, au recouvrement et au contentieux",
+            "description": "Le Fiscal by Doctrine poursuit son développement avec le lancement d’un 3e volet de son Encyclopédie fiscale, dédié au contrôle, au recouvrement et au contentieux. Ce nouveau volume propose une doctri",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://blog.doctrine.fr/lencyclopedie-fiscale-senrichit-dun-nouveau-volet-dedie-au-controle-au-recouvrement-et-au-contentieux/",
+            "type": "blog"
+          }
+        ],
         "features": [],
         "pricing": [],
         "news": []
@@ -59,7 +84,32 @@
       "website": "https://legalmike.ai",
       "liveUpdates": {
         "twitter": [],
-        "blog": [],
+        "blog": [
+          {
+            "title": "AI is overal in de juridische praktijk, maar de echte omslag moet nog beginnen",
+            "description": "",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://legalmike.ai/nieuws/ai-is-overal-in-de-juridische-praktijk-maar-de-echte-omslag-moet-nog-beginnen/",
+            "type": "blog"
+          },
+          {
+            "title": "Groeien als klein advocatenkantoor in 2026: waar de echte winst ligt",
+            "description": "",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://legalmike.ai/nieuws/groeien-als-klein-advocatenkantoor-in-2026-waar-de-echte-winst-ligt/",
+            "type": "blog"
+          },
+          {
+            "title": "Vier toekomstbeelden voor werk in 2030: wat leiders nú al voelen aankomen",
+            "description": "",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://legalmike.ai/nieuws/vier-toekomstbeelden-voor-werk-in-2030-wat-leiders-nu-al-voelen-aankomen/",
+            "type": "blog"
+          }
+        ],
         "features": [],
         "pricing": [],
         "news": []
