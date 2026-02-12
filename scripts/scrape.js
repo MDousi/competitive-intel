@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 const axios = require('axios');
-const cheerio = require('cheerio');
+const { chromium } = require('playwright');
 const Parser = require('rss-parser');
 const fs = require('fs');
 const path = require('path');
@@ -267,128 +267,160 @@ async function scrapeTwitter(username) {
     }
 }
 
-// 3. BLOG RSS SCRAPER
-async function scrapeBlog(blogUrl) {
+// 3. BLOG RSS SCRAPER WITH PLAYWRIGHT FALLBACK
+async function scrapeBlog(blogUrl, browser) {
     if (!blogUrl) return [];
 
+    // Phase 1: Try multiple RSS variants
+    const rssVariants = ['/rss', '/feed', '/rss.xml', '/atom.xml', '/blog/feed', '/index.xml'];
+    for (const variant of rssVariants) {
+        try {
+            const feed = await rssParser.parseURL(blogUrl + variant);
+            return feed.items.slice(0, 3).map(item => ({
+                title: item.title,
+                description: item.contentSnippet?.substring(0, 200) || item.content?.substring(0, 200) || '',
+                date: timeAgo(new Date(item.pubDate || item.isoDate)),
+                source: 'Blog',
+                url: item.link,
+                type: 'blog'
+            }));
+        } catch (e) {
+            continue;
+        }
+    }
+
+    // Phase 2: Playwright fallback
+    const page = await browser.newPage();
     try {
-        // Try RSS first
-        const feed = await rssParser.parseURL(blogUrl + '/rss');
-        return feed.items.slice(0, 3).map(item => ({
-            title: item.title,
-            description: item.contentSnippet || item.content?.substring(0, 200) || '',
-            date: timeAgo(new Date(item.pubDate || item.isoDate)),
+        await page.goto(blogUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
+        await page.waitForTimeout(2000);
+
+        const posts = await page.evaluate(() => {
+            const selectors = [
+                'article[class*="post"]', '[class*="BlogPost"]', '[class*="ArticleCard"]',
+                'article', '.post', '.blog-post'
+            ];
+            let foundPosts = [];
+            for (const sel of selectors) {
+                const elements = document.querySelectorAll(sel);
+                if (elements.length >= 2) {
+                    foundPosts = Array.from(elements).slice(0, 3);
+                    break;
+                }
+            }
+            return foundPosts.map(post => {
+                const title = post.querySelector('h1, h2, h3, [class*="title"]')?.textContent?.trim() || '';
+                const link = post.querySelector('a')?.href || '';
+                const desc = post.querySelector('p')?.textContent?.trim() || '';
+                return { title, link, description: desc };
+            }).filter(p => p.title && p.link);
+        });
+
+        return posts.map(p => ({
+            title: p.title,
+            description: p.description.substring(0, 200),
+            date: 'Recent',
             source: 'Blog',
-            url: item.link,
+            url: p.link,
             type: 'blog'
         }));
     } catch (error) {
-        // If RSS fails, try scraping HTML
-        try {
-            const response = await axios.get(blogUrl, {
-                timeout: 5000,
-                headers: {
-                    'User-Agent': 'Mozilla/5.0 (compatible; CompetitorBot/1.0)'
-                }
-            });
-            const $ = cheerio.load(response.data);
-            
-            // Generic blog post selectors
-            const posts = [];
-            $('article, .post, .blog-post').slice(0, 3).each((i, elem) => {
-                const title = $(elem).find('h1, h2, h3, .title').first().text().trim();
-                const link = $(elem).find('a').first().attr('href');
-                if (title && link) {
-                    posts.push({
-                        title: title,
-                        description: $(elem).text().substring(0, 200).trim(),
-                        date: 'Recent',
-                        source: 'Blog',
-                        url: link.startsWith('http') ? link : blogUrl + link,
-                        type: 'blog'
-                    });
-                }
-            });
-            
-            return posts;
-        } catch (htmlError) {
-            console.log(`⚠️  Could not scrape blog: ${blogUrl}`);
-            return [];
-        }
+        console.log(`⚠️  Blog scraping failed: ${blogUrl}`);
+        return [];
+    } finally {
+        await page.close();
     }
 }
 
-// 4. CHANGELOG SCRAPER
-async function scrapeChangelog(changelogUrl) {
+// 4. CHANGELOG SCRAPER WITH PLAYWRIGHT
+async function scrapeChangelog(changelogUrl, browser) {
     if (!changelogUrl) return [];
 
+    const page = await browser.newPage();
     try {
-        const response = await axios.get(changelogUrl, {
-            timeout: 5000,
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (compatible; CompetitorBot/1.0)'
+        await page.goto(changelogUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
+        await page.waitForTimeout(1500);
+
+        const updates = await page.evaluate(() => {
+            const selectors = [
+                '[data-changelog-item]', '[class*="ChangelogItem"]', '[class*="ReleaseNote"]',
+                '.hw-item', '.changelog-item', '.release', 'article'
+            ];
+            let items = [];
+            for (const sel of selectors) {
+                const elements = document.querySelectorAll(sel);
+                if (elements.length >= 2) {
+                    items = Array.from(elements).slice(0, 3);
+                    break;
+                }
             }
+            return items.map(item => {
+                const title = item.querySelector('h1, h2, h3, h4, [class*="title"]')?.textContent?.trim() || '';
+                const desc = item.querySelector('p, [class*="description"]')?.textContent?.trim() || '';
+                return { title, description: desc };
+            }).filter(u => u.title);
         });
-        const $ = cheerio.load(response.data);
-        
-        const updates = [];
-        $('.changelog-item, .release, .update, article').slice(0, 3).each((i, elem) => {
-            const title = $(elem).find('h2, h3, .title').first().text().trim();
-            const description = $(elem).find('p, .description').first().text().trim();
-            if (title) {
-                updates.push({
-                    title: title,
-                    description: description.substring(0, 200),
-                    date: 'Recent',
-                    source: 'Changelog',
-                    url: changelogUrl,
-                    type: 'feature'
-                });
-            }
-        });
-        
-        return updates;
+
+        return updates.map(u => ({
+            title: u.title,
+            description: u.description.substring(0, 200),
+            date: 'Recent',
+            source: 'Changelog',
+            url: changelogUrl,
+            type: 'feature'
+        }));
     } catch (error) {
-        console.log(`⚠️  Could not scrape changelog: ${changelogUrl}`);
+        console.log(`⚠️  Changelog scraping failed: ${changelogUrl}`);
         return [];
+    } finally {
+        await page.close();
     }
 }
 
-// 5. PRICING PAGE SCRAPER
-async function scrapePricing(pricingUrl) {
+// 5. PRICING PAGE SCRAPER WITH PLAYWRIGHT
+async function scrapePricing(pricingUrl, browser) {
     if (!pricingUrl) return [];
 
+    const page = await browser.newPage();
     try {
-        const response = await axios.get(pricingUrl, {
-            timeout: 5000,
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (compatible; CompetitorBot/1.0)'
+        await page.goto(pricingUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+        await page.waitForTimeout(2000);
+
+        const pricingData = await page.evaluate(() => {
+            const selectors = [
+                '[data-testid*="pricing"]', '[class*="PricingCard"]', '[class*="PriceCard"]',
+                '.pricing-card', '.plan'
+            ];
+            let cards = [];
+            for (const sel of selectors) {
+                const elements = document.querySelectorAll(sel);
+                if (elements.length >= 1) {
+                    cards = Array.from(elements).slice(0, 3);
+                    break;
+                }
             }
+            return cards.map(card => {
+                const plan = card.querySelector('[class*="plan-name"], h2, h3')?.textContent?.trim() || '';
+                const price = card.querySelector('[class*="price"], [class*="Price"]')?.textContent?.trim() || '';
+                const features = Array.from(card.querySelectorAll('li')).map(li => li.textContent.trim()).slice(0, 3);
+                return { plan, price, features };
+            }).filter(p => p.plan && p.price);
         });
-        const $ = cheerio.load(response.data);
-        
-        // Look for pricing changes or announcements
-        const pricing = [];
-        $('.price, .pricing-card, .plan').each((i, elem) => {
-            const planName = $(elem).find('.plan-name, h3, h4').first().text().trim();
-            const price = $(elem).find('.amount, .price').first().text().trim();
-            
-            if (planName && price) {
-                pricing.push({
-                    title: `${planName}: ${price}`,
-                    description: `Current pricing for ${planName}`,
-                    date: 'Current',
-                    source: 'Pricing',
-                    url: pricingUrl,
-                    type: 'pricing'
-                });
-            }
-        });
-        
-        return pricing.slice(0, 2);
+
+        return pricingData.map(p => ({
+            title: `${p.plan}: ${p.price}`,
+            description: p.features.join(', ') || `Pricing for ${p.plan}`,
+            date: 'Current',
+            source: 'Pricing',
+            url: pricingUrl,
+            type: 'pricing'
+        }));
     } catch (error) {
-        console.log(`⚠️  Could not scrape pricing: ${pricingUrl}`);
+        console.log(`⚠️  Pricing scraping failed: ${pricingUrl}`);
         return [];
+    } finally {
+        await page.close();
     }
 }
 
@@ -425,87 +457,104 @@ async function scrapeTechCrunchFunding() {
     }
 }
 
-// MAIN SCRAPER
+// MAIN SCRAPER WITH PLAYWRIGHT
 async function scrapeAll() {
-    console.log('🚀 Starting competitive intelligence scraper...\n');
-    
-    const results = {
-        lastUpdated: new Date().toISOString(),
-        competitors: []
-    };
+    console.log('🚀 Starting Playwright-powered scraper...\n');
 
-    // Get general news first
-    const generalNews = await scrapeNews();
-    const fundingNews = await scrapeTechCrunchFunding();
+    // Launch browser ONCE for all competitors
+    const browser = await chromium.launch({
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--single-process',
+            '--disable-gpu'
+        ]
+    });
 
-    // Scrape each competitor
-    for (const competitor of CONFIG.competitors) {
-        console.log(`\n📊 Scraping ${competitor.name}...`);
-        
-        const competitorData = {
-            name: competitor.name,
-            country: competitor.country,
-            website: competitor.website,
-            liveUpdates: {
-                twitter: [],
-                blog: [],
-                features: [],
-                pricing: [],
-                news: []
-            },
-            roadmap: []
+    try {
+        const results = {
+            lastUpdated: new Date().toISOString(),
+            competitors: []
         };
 
-        // Twitter
-        if (competitor.twitter) {
-            const tweets = await scrapeTwitter(competitor.twitter);
-            competitorData.liveUpdates.twitter = tweets.slice(0, 2);
-            console.log(`  🐦 Twitter: ${tweets.length} tweets`);
+        // Get general news (no Playwright needed)
+        const generalNews = await scrapeNews();
+        const fundingNews = await scrapeTechCrunchFunding();
+
+        // Scrape competitors with shared browser
+        for (const competitor of CONFIG.competitors) {
+            console.log(`\n📊 Scraping ${competitor.name}...`);
+
+            const competitorData = {
+                name: competitor.name,
+                country: competitor.country,
+                website: competitor.website,
+                liveUpdates: {
+                    twitter: [],
+                    blog: [],
+                    features: [],
+                    pricing: [],
+                    news: []
+                },
+                roadmap: []
+            };
+
+            // Twitter (API - no browser)
+            if (competitor.twitter) {
+                const tweets = await scrapeTwitter(competitor.twitter);
+                competitorData.liveUpdates.twitter = tweets.slice(0, 2);
+                console.log(`  🐦 Twitter: ${tweets.length} tweets`);
+            }
+
+            // Blog (RSS first, Playwright fallback)
+            if (competitor.blog) {
+                const blogPosts = await scrapeBlog(competitor.blog, browser);
+                competitorData.liveUpdates.blog = blogPosts;
+                console.log(`  📝 Blog: ${blogPosts.length} posts`);
+            }
+
+            // Changelog (Playwright)
+            if (competitor.changelog) {
+                const changelog = await scrapeChangelog(competitor.changelog, browser);
+                competitorData.liveUpdates.features = changelog;
+                console.log(`  ✨ Features: ${changelog.length} updates`);
+            }
+
+            // Pricing (Playwright)
+            if (competitor.pricing) {
+                const pricing = await scrapePricing(competitor.pricing, browser);
+                competitorData.liveUpdates.pricing = pricing;
+                console.log(`  💰 Pricing: ${pricing.length} items`);
+            }
+
+            // Filter relevant news
+            const relevantNews = [...generalNews, ...fundingNews].filter(item =>
+                item.title.toLowerCase().includes(competitor.name.toLowerCase()) ||
+                item.description.toLowerCase().includes(competitor.name.toLowerCase())
+            );
+            competitorData.liveUpdates.news = relevantNews.slice(0, 3);
+
+            results.competitors.push(competitorData);
+
+            // Delay between competitors (be nice)
+            await new Promise(resolve => setTimeout(resolve, 2000));
         }
 
-        // Blog
-        if (competitor.blog) {
-            const blogPosts = await scrapeBlog(competitor.blog);
-            competitorData.liveUpdates.blog = blogPosts;
-            console.log(`  📝 Blog: ${blogPosts.length} posts`);
-        }
+        // Save results
+        const dataPath = path.join(__dirname, '../data/competitors.json');
+        fs.writeFileSync(dataPath, JSON.stringify(results, null, 2));
 
-        // Changelog
-        if (competitor.changelog) {
-            const changelog = await scrapeChangelog(competitor.changelog);
-            competitorData.liveUpdates.features = changelog;
-            console.log(`  ✨ Features: ${changelog.length} updates`);
-        }
+        console.log('\n✅ Scraping complete!');
+        console.log(`📁 Data saved to: ${dataPath}`);
+        console.log(`🕐 Last updated: ${new Date().toLocaleString('nl-NL')}`);
 
-        // Pricing
-        if (competitor.pricing) {
-            const pricing = await scrapePricing(competitor.pricing);
-            competitorData.liveUpdates.pricing = pricing;
-            console.log(`  💰 Pricing: ${pricing.length} items`);
-        }
+        return results;
 
-        // Filter relevant news for this competitor
-        const relevantNews = [...generalNews, ...fundingNews].filter(item =>
-            item.title.toLowerCase().includes(competitor.name.toLowerCase()) ||
-            item.description.toLowerCase().includes(competitor.name.toLowerCase())
-        );
-        competitorData.liveUpdates.news = relevantNews.slice(0, 3);
-
-        results.competitors.push(competitorData);
-        
-        // Be nice to servers
-        await new Promise(resolve => setTimeout(resolve, 1000));
+    } finally {
+        await browser.close();
     }
-
-    // Save results
-    const dataPath = path.join(__dirname, '../data/competitors.json');
-    fs.writeFileSync(dataPath, JSON.stringify(results, null, 2));
-    
-    console.log('\n✅ Scraping complete!');
-    console.log(`📁 Data saved to: ${dataPath}`);
-    console.log(`🕐 Last updated: ${new Date().toLocaleString('nl-NL')}`);
-    
-    return results;
 }
 
 // Run scraper

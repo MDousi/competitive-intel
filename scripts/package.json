@@ -1,22 +1,24 @@
 {
   "name": "competitive-intel-scraper",
-  "version": "1.0.0",
-  "description": "Automated competitor intelligence scraper for legal tech companies",
+  "version": "2.0.0",
+  "description": "Playwright-powered competitor intelligence scraper for legal tech companies",
   "main": "scrape.js",
   "scripts": {
     "scrape": "node scrape.js",
+    "install-browsers": "playwright install chromium",
     "test": "echo \"No tests yet\" && exit 0"
   },
   "keywords": [
     "scraper",
     "competitive-intelligence",
-    "legal-tech"
+    "legal-tech",
+    "playwright"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.6.2",
-    "cheerio": "^1.0.0-rc.12",
+    "playwright": "^1.41.0",
     "rss-parser": "^3.13.0",
     "dotenv": "^16.3.1"
   }
