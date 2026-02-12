@@ -2,10 +2,14 @@
 require('dotenv').config();
 
 const axios = require('axios');
-const { chromium } = require('playwright');
+const { chromium } = require('playwright-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 const Parser = require('rss-parser');
 const fs = require('fs');
 const path = require('path');
+
+// Enable stealth mode to avoid bot detection
+chromium.use(StealthPlugin());
 
 const rssParser = new Parser();
 
@@ -248,6 +252,34 @@ async function retryWithBackoff(fn, maxRetries = 3, fnName = 'operation') {
     }
 }
 
+// Helper: Create realistic browser context to avoid bot detection
+async function createStealthContext(browser) {
+    const context = await browser.newContext({
+        viewport: { width: 1920, height: 1080 },
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        locale: 'en-US',
+        timezoneId: 'America/New_York',
+        permissions: ['geolocation'],
+        geolocation: { latitude: 40.7128, longitude: -74.0060 },
+        colorScheme: 'light',
+        extraHTTPHeaders: {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1'
+        }
+    });
+    return context;
+}
+
+// Helper: Random delay to mimic human behavior
+async function humanDelay(min = 1000, max = 3000) {
+    const delay = Math.floor(Math.random() * (max - min + 1)) + min;
+    await new Promise(resolve => setTimeout(resolve, delay));
+}
+
 // 1. NEWS API SCRAPER
 async function scrapeNews() {
     console.log('📰 Scraping legal tech news...');
@@ -349,13 +381,15 @@ async function scrapeBlog(blogUrl, browser) {
         }
     }
 
-    // Phase 2: Playwright fallback with retry
-    const page = await browser.newPage();
+    // Phase 2: Playwright fallback with retry and stealth
+    const context = await createStealthContext(browser);
+    const page = await context.newPage();
     try {
+        await humanDelay(500, 1500); // Random delay before navigation
         await retryWithBackoff(async () => {
-            await page.goto(blogUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
+            await page.goto(blogUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
         }, 3, `Blog page load (${blogUrl})`);
-        await page.waitForTimeout(2000);
+        await humanDelay(2000, 4000); // Human-like wait after page load
 
         const posts = await page.evaluate(() => {
             const selectors = [
@@ -391,6 +425,7 @@ async function scrapeBlog(blogUrl, browser) {
         return [];
     } finally {
         await page.close();
+        await context.close();
     }
 }
 
@@ -398,13 +433,15 @@ async function scrapeBlog(blogUrl, browser) {
 async function scrapeChangelog(changelogUrl, browser) {
     if (!changelogUrl) return [];
 
-    const page = await browser.newPage();
+    const context = await createStealthContext(browser);
+    const page = await context.newPage();
     try {
+        await humanDelay(500, 1500);
         await retryWithBackoff(async () => {
-            await page.goto(changelogUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+            await page.goto(changelogUrl, { waitUntil: 'networkidle', timeout: 30000 });
         }, 3, `Changelog page load (${changelogUrl})`);
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
-        await page.waitForTimeout(1500);
+        await humanDelay(1500, 3000);
 
         const updates = await page.evaluate(() => {
             const selectors = [
@@ -440,6 +477,7 @@ async function scrapeChangelog(changelogUrl, browser) {
         return [];
     } finally {
         await page.close();
+        await context.close();
     }
 }
 
@@ -447,12 +485,14 @@ async function scrapeChangelog(changelogUrl, browser) {
 async function scrapePricing(pricingUrl, browser) {
     if (!pricingUrl) return [];
 
-    const page = await browser.newPage();
+    const context = await createStealthContext(browser);
+    const page = await context.newPage();
     try {
+        await humanDelay(500, 1500);
         await retryWithBackoff(async () => {
-            await page.goto(pricingUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+            await page.goto(pricingUrl, { waitUntil: 'networkidle', timeout: 30000 });
         }, 3, `Pricing page load (${pricingUrl})`);
-        await page.waitForTimeout(2000);
+        await humanDelay(2000, 4000);
 
         const pricingData = await page.evaluate(() => {
             const selectors = [
@@ -488,6 +528,7 @@ async function scrapePricing(pricingUrl, browser) {
         return [];
     } finally {
         await page.close();
+        await context.close();
     }
 }
 
@@ -528,14 +569,16 @@ async function scrapeTechCrunchFunding() {
 async function scrapeAll() {
     console.log('🚀 Starting Playwright-powered scraper...\n');
 
-    // Launch browser ONCE for all competitors
+    // Launch browser ONCE for all competitors with stealth mode
     const browser = await chromium.launch({
         headless: true,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--disable-gpu'
+            '--disable-gpu',
+            '--disable-blink-features=AutomationControlled',
+            '--disable-features=IsolateOrigins,site-per-process'
         ]
     });
 
