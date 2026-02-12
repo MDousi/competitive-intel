@@ -22,7 +22,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: scripts/package-lock.json
 
-      - name: Clear npm cache (force clean install)
+      - name: Clear npm cache
         run: |
           cd scripts
           rm -rf node_modules
@@ -32,7 +32,13 @@ jobs:
         run: |
           cd scripts
           npm ci
-          
+
+      - name: Install Playwright browsers
+        run: |
+          cd scripts
+          npx playwright install chromium
+          npx playwright install-deps chromium
+
       - name: Run scraper
         env:
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
