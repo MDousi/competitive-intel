@@ -29,7 +29,8 @@ const CONFIG = {
             website: 'https://harvey.ai',
             blog: 'https://harvey.ai/blog',
             twitter: 'harvey_ai',
-            changelog: 'https://harvey.ai/releases'
+            changelog: 'https://harvey.ai/blog', // No separate changelog, check blog for updates
+            pricing: null // Enterprise only
         },
         {
             name: 'Juro',
@@ -37,138 +38,175 @@ const CONFIG = {
             website: 'https://juro.com',
             blog: 'https://juro.com/blog',
             twitter: 'juroHQ',
-            changelog: 'https://juro.com/changelog'
+            changelog: 'https://juro.com/changelog',
+            pricing: 'https://juro.com/pricing'
         },
         {
             name: 'Doctrine',
             country: 'FR',
             website: 'https://doctrine.fr',
             blog: 'https://doctrine.fr/blog',
-            twitter: 'Doctrine_fr'
+            twitter: 'Doctrine_fr',
+            changelog: 'https://doctrine.fr/blog', // Check blog for updates
+            pricing: 'https://doctrine.fr/tarifs'
         },
         {
             name: 'LegalMike',
             country: 'NL',
             website: 'https://legalmike.ai',
             blog: 'https://legalmike.ai/news',
-            twitter: 'legalmike_ai'
+            twitter: 'legalmike_ai',
+            changelog: 'https://legalmike.ai/news', // Check news for updates
+            pricing: 'https://legalmike.ai/pricing'
         },
         {
             name: 'Robin AI',
             country: 'UK',
             website: 'https://robinai.com',
             blog: 'https://robinai.com/blog',
-            twitter: 'Robin_AI_'
+            twitter: 'Robin_AI_',
+            changelog: 'https://robinai.com/blog', // Check blog for product updates
+            pricing: 'https://robinai.com/pricing'
         },
         {
             name: 'Luminance',
             country: 'UK',
             website: 'https://luminance.com',
             blog: 'https://luminance.com/blog',
-            twitter: 'LuminanceTech'
+            twitter: 'LuminanceTech',
+            changelog: 'https://luminance.com/blog', // Check blog for updates
+            pricing: 'https://luminance.com/request-demo' // Enterprise only
         },
         {
             name: 'LegalFly',
             country: 'NL',
             website: 'https://legalfly.nl',
             blog: 'https://legalfly.nl/blog',
-            twitter: 'legalfly_nl'
+            twitter: 'legalfly_nl',
+            changelog: 'https://legalfly.nl/blog', // Check blog for updates
+            pricing: 'https://legalfly.nl/pricing'
         },
         {
             name: 'LegalMind',
             country: 'NL',
             website: 'https://legalmind.io',
             blog: 'https://legalmind.io/blog',
-            twitter: 'legalmind_io'
+            twitter: 'legalmind_io',
+            changelog: 'https://legalmind.io/blog', // Check blog for updates
+            pricing: 'https://legalmind.io/pricing'
         },
         {
             name: 'Legaltree',
             country: 'NL',
             website: 'https://legaltree.nl',
             blog: 'https://legaltree.nl/blog',
-            changelog: 'https://legaltree.nl/releases'
+            changelog: 'https://legaltree.nl/releases',
+            pricing: 'https://legaltree.nl/pricing'
         },
         {
             name: 'Beele.ai',
             country: 'NL',
             website: 'https://beele.ai',
             blog: 'https://beele.ai/blog',
-            twitter: 'beele_ai'
+            twitter: 'beele_ai',
+            changelog: 'https://beele.ai/blog', // Check blog for updates
+            pricing: 'https://beele.ai/pricing'
         },
         {
             name: 'LegalUp',
             country: 'NL',
             website: 'https://legalup.nl',
             blog: 'https://legalup.nl/blog',
-            changelog: 'https://legalup.nl/updates'
+            changelog: 'https://legalup.nl/updates',
+            pricing: 'https://legalup.nl/pricing'
         },
         {
             name: 'Precisely',
             country: 'SE',
             website: 'https://precisely.ai',
             blog: 'https://precisely.ai/blog',
-            twitter: 'precisely_ai'
+            twitter: 'precisely_ai',
+            changelog: 'https://precisely.ai/blog', // Check blog for updates
+            pricing: 'https://precisely.ai/pricing'
         },
         {
             name: 'LexMachina',
             country: 'DE',
             website: 'https://lexmachina.de',
-            blog: 'https://lexmachina.de/blog'
+            blog: 'https://lexmachina.de/blog',
+            changelog: 'https://lexmachina.de/blog', // Check blog for updates
+            pricing: null // Enterprise only
         },
         {
             name: 'Legisway',
             country: 'BE',
             website: 'https://legisway.com',
             blog: 'https://legisway.com/blog',
-            twitter: 'Legisway'
+            twitter: 'Legisway',
+            changelog: 'https://legisway.com/blog', // Check blog for updates
+            pricing: 'https://legisway.com/pricing'
         },
         {
             name: 'Ironclad',
             country: 'US',
             website: 'https://ironcladapp.com',
             blog: 'https://ironcladapp.com/blog',
-            twitter: 'IroncladHQ'
+            twitter: 'IroncladHQ',
+            changelog: 'https://ironcladapp.com/releases',
+            pricing: 'https://ironcladapp.com/pricing'
         },
         {
             name: 'LawGeex',
             country: 'IL',
             website: 'https://lawgeex.com',
             blog: 'https://lawgeex.com/blog',
-            twitter: 'LawGeex'
+            twitter: 'LawGeex',
+            changelog: 'https://lawgeex.com/blog', // Check blog for updates
+            pricing: 'https://lawgeex.com/pricing'
         },
         {
             name: 'Conga',
             country: 'US',
             website: 'https://conga.com',
             blog: 'https://conga.com/blog',
-            twitter: 'GetConga'
+            twitter: 'GetConga',
+            changelog: 'https://conga.com/blog', // Check blog for updates
+            pricing: 'https://conga.com/pricing'
         },
         {
             name: 'Wolters Kluwer Legal',
             country: 'NL',
             website: 'https://wolterskluwer.com/legal',
-            blog: 'https://wolterskluwer.com/news'
+            blog: 'https://wolterskluwer.com/news',
+            changelog: 'https://wolterskluwer.com/news', // Check news for updates
+            pricing: null // Enterprise only
         },
         {
             name: 'Della',
             country: 'NL',
             website: 'https://della.ai',
             blog: 'https://della.ai/blog',
-            twitter: 'della_ai'
+            twitter: 'della_ai',
+            changelog: 'https://della.ai/blog', // Check blog for updates
+            pricing: 'https://della.ai/pricing'
         },
         {
             name: 'Litigate',
             country: 'ES',
             website: 'https://litigate.es',
             blog: 'https://litigate.es/blog',
-            twitter: 'litigate_es'
+            twitter: 'litigate_es',
+            changelog: 'https://litigate.es/blog', // Check blog for updates
+            pricing: 'https://litigate.es/pricing'
         },
         {
             name: 'Everlaw',
             country: 'US',
             website: 'https://everlaw.com',
             blog: 'https://everlaw.com/blog',
-            twitter: 'Everlaw'
+            twitter: 'Everlaw',
+            changelog: 'https://everlaw.com/blog', // Check blog for updates
+            pricing: 'https://everlaw.com/pricing'
         }
     ]
 };
@@ -183,7 +221,7 @@ function timeAgo(date) {
         dag: 86400,
         uur: 3600
     };
-    
+
     for (let [name, value] of Object.entries(intervals)) {
         const interval = Math.floor(seconds / value);
         if (interval >= 1) {
@@ -191,6 +229,23 @@ function timeAgo(date) {
         }
     }
     return 'Net nu';
+}
+
+// Helper: Retry with exponential backoff
+async function retryWithBackoff(fn, maxRetries = 3, fnName = 'operation') {
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            return await fn();
+        } catch (error) {
+            if (i === maxRetries - 1) {
+                console.log(`❌ ${fnName} failed after ${maxRetries} attempts:`, error.message);
+                throw error;
+            }
+            const delay = Math.pow(2, i) * 1000; // 1s, 2s, 4s
+            console.log(`⚠️  ${fnName} failed, retrying in ${delay/1000}s...`);
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+    }
 }
 
 // 1. NEWS API SCRAPER
@@ -271,8 +326,13 @@ async function scrapeTwitter(username) {
 async function scrapeBlog(blogUrl, browser) {
     if (!blogUrl) return [];
 
-    // Phase 1: Try multiple RSS variants
-    const rssVariants = ['/rss', '/feed', '/rss.xml', '/atom.xml', '/blog/feed', '/index.xml'];
+    // Phase 1: Try multiple RSS variants (expanded from 6 to 15 patterns)
+    const rssVariants = [
+        '/rss', '/feed', '/rss.xml', '/atom.xml', '/feed.xml',
+        '/blog/feed', '/blog/rss', '/blog/atom', '/blog/index.xml',
+        '/news/feed', '/news/rss', '/index.xml',
+        '/feed/atom', '/feed/rss', '/rss/feed'
+    ];
     for (const variant of rssVariants) {
         try {
             const feed = await rssParser.parseURL(blogUrl + variant);
@@ -289,10 +349,12 @@ async function scrapeBlog(blogUrl, browser) {
         }
     }
 
-    // Phase 2: Playwright fallback
+    // Phase 2: Playwright fallback with retry
     const page = await browser.newPage();
     try {
-        await page.goto(blogUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
+        await retryWithBackoff(async () => {
+            await page.goto(blogUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
+        }, 3, `Blog page load (${blogUrl})`);
         await page.waitForTimeout(2000);
 
         const posts = await page.evaluate(() => {
@@ -338,14 +400,17 @@ async function scrapeChangelog(changelogUrl, browser) {
 
     const page = await browser.newPage();
     try {
-        await page.goto(changelogUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+        await retryWithBackoff(async () => {
+            await page.goto(changelogUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+        }, 3, `Changelog page load (${changelogUrl})`);
         await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
         await page.waitForTimeout(1500);
 
         const updates = await page.evaluate(() => {
             const selectors = [
                 '[data-changelog-item]', '[class*="ChangelogItem"]', '[class*="ReleaseNote"]',
-                '.hw-item', '.changelog-item', '.release', 'article'
+                '[class*="Release"]', '[class*="Update"]', '[class*="Version"]',
+                '.hw-item', '.changelog-item', '.release', '.update-item', '.release-note'
             ];
             let items = [];
             for (const sel of selectors) {
@@ -384,7 +449,9 @@ async function scrapePricing(pricingUrl, browser) {
 
     const page = await browser.newPage();
     try {
-        await page.goto(pricingUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+        await retryWithBackoff(async () => {
+            await page.goto(pricingUrl, { waitUntil: 'networkidle2', timeout: 10000 });
+        }, 3, `Pricing page load (${pricingUrl})`);
         await page.waitForTimeout(2000);
 
         const pricingData = await page.evaluate(() => {
@@ -545,9 +612,34 @@ async function scrapeAll() {
         const dataPath = path.join(__dirname, '../data/competitors.json');
         fs.writeFileSync(dataPath, JSON.stringify(results, null, 2));
 
+        // Calculate statistics
+        const stats = results.competitors.reduce((acc, comp) => {
+            acc.total += comp.liveUpdates.blog.length + comp.liveUpdates.features.length +
+                        comp.liveUpdates.pricing.length + comp.liveUpdates.twitter.length +
+                        comp.liveUpdates.news.length;
+            acc.blogs += comp.liveUpdates.blog.length;
+            acc.features += comp.liveUpdates.features.length;
+            acc.pricing += comp.liveUpdates.pricing.length;
+            acc.twitter += comp.liveUpdates.twitter.length;
+            acc.news += comp.liveUpdates.news.length;
+            if (comp.liveUpdates.blog.length + comp.liveUpdates.features.length +
+                comp.liveUpdates.pricing.length > 0) {
+                acc.activeCompetitors++;
+            }
+            return acc;
+        }, { total: 0, blogs: 0, features: 0, pricing: 0, twitter: 0, news: 0, activeCompetitors: 0 });
+
         console.log('\n✅ Scraping complete!');
         console.log(`📁 Data saved to: ${dataPath}`);
         console.log(`🕐 Last updated: ${new Date().toLocaleString('nl-NL')}`);
+        console.log(`\n📊 Summary:`);
+        console.log(`   Total updates found: ${stats.total}`);
+        console.log(`   📝 Blog posts: ${stats.blogs}`);
+        console.log(`   ✨ Features/Changelogs: ${stats.features}`);
+        console.log(`   💰 Pricing items: ${stats.pricing}`);
+        console.log(`   🐦 Tweets: ${stats.twitter}`);
+        console.log(`   📰 News: ${stats.news}`);
+        console.log(`   🎯 Active competitors: ${stats.activeCompetitors}/${results.competitors.length}`);
 
         return results;
 
