@@ -1,6 +1,37 @@
 {
-  "lastUpdated": "2026-02-12T14:30:00.000Z",
+  "lastUpdated": "2026-02-12T15:00:00.000Z",
   "competitors": [
+    {
+      "name": "Alice",
+      "country": "BE",
+      "website": "https://alice.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [
+          {
+            "title": "AI-Powered Platform for Full Lifecycle Legal Casework",
+            "description": "Alice provides an integrated AI workflow that supports legal professionals from document analysis and legal research through to drafting arguments and producing court-ready materials. Founded in 2025 by lawyers Jeroen Villé and Armin Wintein.",
+            "date": "2026-01-12",
+            "source": "Product",
+            "url": "https://theaiinsider.tech/2026/01/12/belgian-legaltech-alice-raises-e1m-pre-seed-to-expand-ai-driven-legal-casework-platform/",
+            "type": "features"
+          }
+        ],
+        "pricing": [],
+        "news": [
+          {
+            "title": "Belgian Legaltech Alice Raises €1M Pre-Seed Funding",
+            "description": "Belgium-based legaltech startup Alice has raised €1 million in pre-seed funding to scale its AI-powered platform. The investment will support team growth and stronger customer support, while also enabling expansion into new markets, beginning with the Netherlands and France.",
+            "date": "2026-01-12",
+            "source": "TheAIInsider",
+            "url": "https://theaiinsider.tech/2026/01/12/belgian-legaltech-alice-raises-e1m-pre-seed-to-expand-ai-driven-legal-casework-platform/",
+            "type": "news"
+          }
+        ]
+      },
+      "roadmap": []
+    },
     {
       "name": "Zeno",
       "country": "NL",
@@ -41,14 +72,6 @@
         "blog": [],
         "features": [
           {
-            "title": "Harvey Hexus Acquisition for Product Demos",
-            "description": "Harvey acquired Hexus (January 2026), a San Francisco company that builds AI tools for creating product demos, videos and guides, to accelerate its products for in-house legal teams.",
-            "date": "2026-01-15",
-            "source": "News",
-            "url": "https://techcrunch.com/2026/02/09/harvey-reportedly-raising-at-11b-valuation-just-months-after-it-hit-8b/",
-            "type": "features"
-          },
-          {
             "title": "Agentic Workflows with Multi-LLM Orchestration",
             "description": "Harvey now positions itself around pre-configured agentic workflows that chain multiple LLMs and tools together to complete specific legal tasks, orchestrating different AI models depending on the task—using one model for document analysis, another for legal research, and a third for contract drafting.",
             "date": "2026-02-01",
@@ -59,6 +82,14 @@
         ],
         "pricing": [],
         "news": [
+          {
+            "title": "Harvey Acquires Hexus for Product Demos and In-House Tools",
+            "description": "Harvey acquired Hexus (January 2026), a San Francisco company that builds AI tools for creating product demos, videos and guides, to accelerate its products for in-house legal teams.",
+            "date": "2026-01-15",
+            "source": "TechCrunch",
+            "url": "https://techcrunch.com/2026/02/09/harvey-reportedly-raising-at-11b-valuation-just-months-after-it-hit-8b/",
+            "type": "news"
+          },
           {
             "title": "Harvey Raises at $11B Valuation - Up from $8B in December",
             "description": "Harvey is reportedly in talks to raise another $200 million at an $11 billion valuation led by Sequoia and Singapore's GIC. If the deal closes, Harvey's valuation would jump by $3 billion in just months, following a December 2025 round at an $8 billion valuation.",
@@ -359,6 +390,115 @@
       "roadmap": []
     },
     {
+      "name": "Legora",
+      "country": "SE",
+      "website": "https://legora.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [
+          {
+            "title": "AI Platform Portal to Ease Firm-Client Work",
+            "description": "Legora is a collaborative AI platform for lawyers that automates legal tasks and provides advanced generative AI tools for legal practice. Trusted by top law firms including Magnusson Law in Sweden.",
+            "date": "2026-01-29",
+            "source": "Product",
+            "url": "https://www.law360.com/pulse/articles/2408199/ai-platform-legora-launches-portal-to-ease-firm-client-work",
+            "type": "features"
+          }
+        ],
+        "pricing": [],
+        "news": [
+          {
+            "title": "🚀 Legora Raising $100M+ at $1.7B Valuation",
+            "description": "Stockholm-headquartered Legora is reportedly in talks to raise over $100 million in new financing that would value the company at approximately $1.7 billion. The funding round is expected to be led by Bessemer Venture Partners (February 11, 2026).",
+            "date": "2026-02-11",
+            "source": "TechFundingNews",
+            "url": "https://techfundingnews.com/stockholm-legal-ai-startup-legora-raises-100m-1-7-billion-valuation/",
+            "type": "news"
+          },
+          {
+            "title": "Magnusson Sweden Partners with Legora for AI Workflows",
+            "description": "Magnusson Law in Sweden, an international business law firm, has partnered with Legora on January 29, 2026 to integrate advanced generative AI tools into its legal practice to streamline legal processes.",
+            "date": "2026-01-29",
+            "source": "Magnusson",
+            "url": "https://www.magnussonlaw.com/news/magnusson-sweden-and-legora-partner-to-advance-legal-workflows-with-ai/",
+            "type": "news"
+          },
+          {
+            "title": "Legora Sponsors Swedish Golfer Ludvig Åberg",
+            "description": "Legora announced a long-term sponsorship deal with Swedish professional golfer Ludvig Åberg on February 2, 2026. This marks Legora's first major athlete collaboration.",
+            "date": "2026-02-02",
+            "source": "Artificial Lawyer",
+            "url": "https://www.artificiallawyer.com/2026/02/02/legora-to-sponsor-swedish-golfer-yep-really/",
+            "type": "news"
+          }
+        ]
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Lexroom",
+      "country": "IT",
+      "website": "https://lexroom.ai",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [
+          {
+            "title": "Vertical Generative AI for Legal Research",
+            "description": "Lexroom.ai transforms legal research with vertical generative AI specifically designed for legal professionals. The platform provides AI-powered legal research capabilities tailored to the European legal market.",
+            "date": "2025-03-15",
+            "source": "Product",
+            "url": "https://www.eu-startups.com/2025/03/lexroom-ai-raises-e2-million-to-transform-legal-researchwith-vertical-generative-ai/",
+            "type": "features"
+          }
+        ],
+        "pricing": [],
+        "news": [
+          {
+            "title": "Lexroom.ai Raises €2M to Transform Legal Research",
+            "description": "Italian legal tech startup Lexroom.ai raised €2 million in funding to transform legal research with vertical generative AI. The platform focuses on providing specialized AI capabilities for European legal professionals.",
+            "date": "2025-03-15",
+            "source": "EU-Startups",
+            "url": "https://www.eu-startups.com/2025/03/lexroom-ai-raises-e2-million-to-transform-legal-researchwith-vertical-generative-ai/",
+            "type": "news"
+          }
+        ]
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Noxtua",
+      "country": "DE",
+      "website": "https://noxtua.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [
+          {
+            "title": "Europe's Sovereign AI - Specialized Legal Transformer Model",
+            "description": "Berlin-based Noxtua (formerly Xayn) has built a specialized transformer-based AI model trained exclusively on legal contracts and documents from the German legal system. Training data comes directly from C.H. Beck's archive of 55 million legal documents, the largest of its kind in the German-speaking world.",
+            "date": "2025-12-15",
+            "source": "Product",
+            "url": "https://techfundingnews.com/german-legaltech-startup-noxtua-snaps-92m-to-develop-europes-sovereign-ai/",
+            "type": "features"
+          }
+        ],
+        "pricing": [],
+        "news": [
+          {
+            "title": "🚀 German Legaltech Noxtua Raises €80.7M Series B",
+            "description": "Berlin-based legal tech Noxtua (formerly Xayn) scored a Series B round of €80.7m, the second biggest legal tech raise in Europe to date. The company is developing Europe's sovereign AI for legal contracts.",
+            "date": "2025-12-15",
+            "source": "TechFundingNews",
+            "url": "https://techfundingnews.com/german-legaltech-startup-noxtua-snaps-92m-to-develop-europes-sovereign-ai/",
+            "type": "news"
+          }
+        ]
+      },
+      "roadmap": []
+    },
+    {
       "name": "LegalUp",
       "country": "NL",
       "website": "https://legalup.nl",
@@ -407,6 +547,37 @@
         "features": [],
         "pricing": [],
         "news": []
+      },
+      "roadmap": []
+    },
+    {
+      "name": "Kira Systems",
+      "country": "CA",
+      "website": "https://kirasystems.com",
+      "liveUpdates": {
+        "twitter": [],
+        "blog": [],
+        "features": [
+          {
+            "title": "🚀 Next-Gen Kira AI with Hybrid Gen AI/Proprietary Approach",
+            "description": "Litera launched the next generation of Kira in January 2026, combining gen AI with proprietary AI models trained on over one million legal contracts to deliver a consistent 90% or greater level of accuracy in contract analysis. Planned 2026 enhancements include Grid Chat for natural language querying and new intelligent workflows.",
+            "date": "2026-01-15",
+            "source": "LawSites",
+            "url": "https://www.lawnext.com/2026/01/litera-expands-kiras-ai-capabilities-with-hybrid-gen-ai-proprietary-approach-to-contract-review.html",
+            "type": "features"
+          }
+        ],
+        "pricing": [],
+        "news": [
+          {
+            "title": "Litera Expands Kira's AI Capabilities for Faster Contract Review",
+            "description": "Litera significantly enhanced Kira, its AI-powered contract review platform, with new capabilities designed to address growing demands for speed, accuracy and trusted generative AI. The platform is trusted by 71% of the Fortune 100.",
+            "date": "2026-01-15",
+            "source": "Security Enterprise Cloud",
+            "url": "https://seczine.com/hacking/2026/01/litera-launches-nextgen-kira-ai-for-faster-contrac/",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
