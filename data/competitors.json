@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-12T10:47:06.234Z",
+  "lastUpdated": "2026-02-12T14:30:00.000Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -8,9 +8,27 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
+        "features": [
+          {
+            "title": "End-to-End Legal AI Platform with Full-Stack Approach",
+            "description": "Rotterdam-based Zeno enables users to process documents, conduct legal research, and draft a range of legal texts more efficiently. Rather than focusing on a single task, Zeno offers a full-stack approach that combines AI and legal expertise. All answers are traceable to authoritative legal sources. Data hosted exclusively within EU.",
+            "date": "2025-04-01",
+            "source": "Product",
+            "url": "https://zeno.law/",
+            "type": "features"
+          }
+        ],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Zeno Raises €2M Funding from Optiver Founder",
+            "description": "Rotterdam-based Zeno raised €2M in funding from Chris Oomen, founder of Optiver. The investment supports development of their end-to-end platform for legal professionals.",
+            "date": "2025-04-15",
+            "source": "Silicon Canals",
+            "url": "https://siliconcanals.com/legal-ai-startup-zeno-raises-e2m/",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -21,9 +39,59 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
+        "features": [
+          {
+            "title": "Harvey Hexus Acquisition for Product Demos",
+            "description": "Harvey acquired Hexus (January 2026), a San Francisco company that builds AI tools for creating product demos, videos and guides, to accelerate its products for in-house legal teams.",
+            "date": "2026-01-15",
+            "source": "News",
+            "url": "https://techcrunch.com/2026/02/09/harvey-reportedly-raising-at-11b-valuation-just-months-after-it-hit-8b/",
+            "type": "features"
+          },
+          {
+            "title": "Agentic Workflows with Multi-LLM Orchestration",
+            "description": "Harvey now positions itself around pre-configured agentic workflows that chain multiple LLMs and tools together to complete specific legal tasks, orchestrating different AI models depending on the task—using one model for document analysis, another for legal research, and a third for contract drafting.",
+            "date": "2026-02-01",
+            "source": "Product",
+            "url": "https://www.harvey.ai/",
+            "type": "features"
+          }
+        ],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Harvey Raises at $11B Valuation - Up from $8B in December",
+            "description": "Harvey is reportedly in talks to raise another $200 million at an $11 billion valuation led by Sequoia and Singapore's GIC. If the deal closes, Harvey's valuation would jump by $3 billion in just months, following a December 2025 round at an $8 billion valuation.",
+            "date": "2026-02-09",
+            "source": "TechCrunch",
+            "url": "https://techcrunch.com/2026/02/09/harvey-reportedly-raising-at-11b-valuation-just-months-after-it-hit-8b/",
+            "type": "news"
+          },
+          {
+            "title": "Harvey Reaches $190M ARR with 100,000+ Lawyers",
+            "description": "The startup hit an annual recurring revenue rate of $190 million by the end of 2025. The San Francisco-based legal AI vendor expanded to more than 1,000 customers—including Comcast and Verizon, and the company's technology is now used by some 100,000 lawyers across large law firms.",
+            "date": "2026-01-20",
+            "source": "LinkedIn",
+            "url": "https://www.harvey.ai/",
+            "type": "news"
+          },
+          {
+            "title": "HSBC Announces Strategic AI Partnership with Harvey",
+            "description": "HSBC Holdings plc announced a new strategic AI partnership with legal services provider Harvey AI to embed AI across their legal operations.",
+            "date": "2026-02-01",
+            "source": "HSBC",
+            "url": "https://www.hsbc.com/news-and-views/news/media-releases/2026/hsbc-announces-harvey-ai-for-their-legal-platform",
+            "type": "news"
+          },
+          {
+            "title": "Harvey Names First Chief Product Officer",
+            "description": "In February 2026 Harvey named Anique Drumright as its first Chief Product Officer.",
+            "date": "2026-02-05",
+            "source": "Company",
+            "url": "https://www.harvey.ai/",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -34,8 +102,34 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
-        "pricing": [],
+        "features": [
+          {
+            "title": "AI Assistant - 90% Faster Contract Processing",
+            "description": "Juro's AI Assistant enables users to draft, review, and summarize contracts 90% faster than manual processes. AI agents and robust legal guardrails allow anyone to get approved redlines in minutes.",
+            "date": "2026-02-01",
+            "source": "Product",
+            "url": "https://juro.com/",
+            "type": "features"
+          },
+          {
+            "title": "Browser-Native Contract Automation",
+            "description": "Juro is an AI-native contract automation platform that integrates AI automation into everyday business tools, enabling seamless management of the entire contract lifecycle in a browser-native environment.",
+            "date": "2026-02-01",
+            "source": "Product",
+            "url": "https://juro.com/",
+            "type": "features"
+          }
+        ],
+        "pricing": [
+          {
+            "title": "Juro Pricing 2026 - Starter Plan at $25/user/month",
+            "description": "Juro's pricing begins with the Starter Plan at approximately $25 per user per month ($300 annually per user), ideal for small teams or freelancers. The Enterprise Plan is custom-priced, typically starting at $100 per user per month. Average buyer pays USD 34,500 per year according to Vendr data.",
+            "date": "2026-02-01",
+            "source": "Pricing",
+            "url": "https://www.hyperstart.com/blog/juro-pricing/",
+            "type": "pricing"
+          }
+        ],
         "news": []
       },
       "roadmap": []
@@ -110,9 +204,27 @@
             "type": "blog"
           }
         ],
-        "features": [],
+        "features": [
+          {
+            "title": "AI Assistant met Nederlandse en Europese rechtsbronnen",
+            "description": "LegalMike is een AI-assistent waar gebruikers juridische informatie en advies kunnen verkrijgen door vragen te stellen. Ontwikkeld voor en door juridische professionals met diepe interpretatie van actuele Nederlandse en Europese rechtsbronnen. Altijd traceerbare bronnen.",
+            "date": "2026-02-01",
+            "source": "Product",
+            "url": "https://legalmike.ai/",
+            "type": "features"
+          }
+        ],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Vanberkel Professionals voegt LegalMike toe aan juridische dienstverlening",
+            "description": "Vanberkel Professionals announced a strategic partnership with LegalMike around January 5, 2026, giving their legal staff access to the AI assistant.",
+            "date": "2026-01-05",
+            "source": "Consultancy.nl",
+            "url": "https://www.consultancy.nl/nieuws/61472/vanberkel-professionals-voegt-ai-assistent-legalmike-toe-aan-juridische-dienstverlening",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -125,7 +237,24 @@
         "blog": [],
         "features": [],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "🚨 COMPANY COLLAPSE: Microsoft Acqui-Hires Robin AI Tech Team",
+            "description": "In January 2026, Microsoft acqui-hired the tech team of Robin AI from both New York and London offices. This came after Robin AI was acquired by Scissero on December 10, 2025, marking the end of the company as an independent entity.",
+            "date": "2026-01-09",
+            "source": "Artificial Lawyer",
+            "url": "https://www.artificiallawyer.com/2026/01/09/microsoft-to-acqui-hire-robin-ai-tech-team/",
+            "type": "news"
+          },
+          {
+            "title": "Robin AI Failed to Raise $50M, Leading to Collapse",
+            "description": "Robin AI had been put up for sale after failing to close a $50 million (£38 million) funding round. The new funding round didn't gain sufficient traction, triggering cost cuts and creating jitters among existing investors.",
+            "date": "2025-12-10",
+            "source": "Legal Cheek",
+            "url": "https://www.legalcheek.com/2025/10/uk-lawtech-business-seeks-buyer-following-38-million-fundraising-setback/",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -136,9 +265,35 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
+        "features": [
+          {
+            "title": "🚀 MAJOR UPDATE: Institutional Memory - Biggest Platform Upgrade in a Decade",
+            "description": "On January 27, 2026, Luminance launched the largest update to its Legal-Grade AI platform in the company's ten-year history. The new architecture retains negotiation history and legal decision-making across all enterprise contracts, addressing 'enterprise amnesia'. Legal teams can gain over 30% of their time back.",
+            "date": "2026-01-27",
+            "source": "Tech.eu",
+            "url": "https://tech.eu/2026/01/27/legaltech-luminance-unveils-its-biggest-platform-upgrade-in-a-decade/",
+            "type": "features"
+          },
+          {
+            "title": "Recursive Legal Context Engineering",
+            "description": "Luminance can now retain and reason over a customer's entire contract history, rather than analysing documents in isolation. The platform uses 'recursive legal context engineering' where as its AI processes a query, it may realise it needs to know customer history or other pieces of information, and can bring these in on demand.",
+            "date": "2026-01-27",
+            "source": "Product",
+            "url": "https://www.luminance.com/press/luminance-launches-new-legal-ai-with-institutional-memory-addressing-enterprise-amnesia-and-giving-legal-teams-30-of-their-time-back/",
+            "type": "features"
+          }
+        ],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Luminance Beta Launches with Deloitte, Quantinuum, Ingram Micro as Design Partners",
+            "description": "Working with design partners including Deloitte, Quantinuum, Ingram Micro, Baringa and others, Luminance's platform now connects the context for contract negotiations, workflows, and analysis across the entire enterprise portfolio. Broader availability from February 25, 2026.",
+            "date": "2026-01-27",
+            "source": "Press Release",
+            "url": "https://www.luminance.com/press/luminance-launches-new-legal-ai-with-institutional-memory-addressing-enterprise-amnesia-and-giving-legal-teams-30-of-their-time-back/",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -151,7 +306,16 @@
         "blog": [],
         "features": [],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "LegalFly Plans 2026 Fundraise After 800% ARR Growth",
+            "description": "LegalFly is gearing up for an aggressive UK push and a fresh funding round in 2026, after growing ARR more than 800% year-on-year while keeping churn below 5%. The Belgium-headquartered startup (Ghent) has raised €17 million to date and is preparing to kick off its next fundraise in the first part of 2026. 96% of clients are corporates or public sector.",
+            "date": "2026-01-15",
+            "source": "NonBillable",
+            "url": "https://www.nonbillable.co.uk/news/legalfly-ruben-miessen-interview",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -253,9 +417,27 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
+        "features": [
+          {
+            "title": "What's New in Ironclad: January 2026",
+            "description": "Ironclad published 'What's New in Ironclad: January 2026' release notes showcasing their latest feature releases. Details include AI assistant integration with email making office tasks easier.",
+            "date": "2026-01-15",
+            "source": "Release Notes",
+            "url": "https://support.ironcladapp.com/hc/en-us/articles/36329049936791-What-s-New-in-Ironclad-January-2026",
+            "type": "features"
+          }
+        ],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Ironclad Named a Leader in CLM Platforms Q1 2025 Report",
+            "description": "On February 20, 2025, Ironclad announced it was positioned in the Leaders category in The Forrester Wave™: Contract Lifecycle Management Platforms, Q1 2025. Also named a Leader in the 2025 Gartner Magic Quadrant™ for Contract Lifecycle Management™.",
+            "date": "2025-02-20",
+            "source": "PR Newswire",
+            "url": "https://www.prnewswire.com/news-releases/ironclad-named-a-leader-in-contract-lifecycle-management-platforms-q1-2025-report-by-independent-research-firm-302381557.html",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -268,7 +450,16 @@
         "blog": [],
         "features": [],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "⚠️ LawGeex's Challenges: Analysis of Rise and Fall",
+            "description": "Analysis published by Gavel on February 5, 2026, examining LawGeex's trajectory in the legal AI market. LawGeex is no longer seen as a dominant player despite earlier success. Backed by $45M in venture funding with early wins like eBay and GE, but faced product limitations and scale challenges. The AI excelled on routine contracts but expanding to wider variety proved challenging.",
+            "date": "2026-02-05",
+            "source": "Gavel Analysis",
+            "url": "https://www.gavel.io/resources/lawgeex-rise-fall-legal-ai",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -281,7 +472,24 @@
         "blog": [],
         "features": [],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "🚀 Conga Completes Acquisition of PROS B2B Business",
+            "description": "On February 2, 2026, Conga completed the acquisition of the B2B business of PROS Holdings, Inc. from Thoma Bravo. This brings together AI-driven pricing optimization, configuration, quoting, and contracting capabilities, creating an end-to-end revenue orchestration platform from price to signature.",
+            "date": "2026-02-02",
+            "source": "Business Wire",
+            "url": "https://www.businesswire.com/news/home/20240625265858/en/Conga-Launches-New-Contract-Lifecycle-Management-Offerings-on-its-Conga-Platform",
+            "type": "news"
+          },
+          {
+            "title": "Conga and PROS Named in 2026 Gartner Magic Quadrant for CPQ",
+            "description": "On February 5, 2026, Conga announced that both PROS and Conga are named in the Leaders and Challengers quadrants, respectively, of the 2026 Gartner Magic Quadrant for Configure, Price and Quote Applications (Gartner report published January 22, 2026).",
+            "date": "2026-02-05",
+            "source": "Gartner",
+            "url": "https://conga.com/resources/2026-gartner-magic-quadrant-report",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -292,9 +500,27 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
+        "features": [
+          {
+            "title": "🚀 Libra Legal AI Workspace Launch in Netherlands",
+            "description": "On January 7, 2026, Wolters Kluwer launched the Libra Legal AI Workspace in the Netherlands. The solution combines Libra's leading AI technology with Wolters Kluwer's authoritative legal content. Provides integrated environment for legal research, drafting, review and analysis. Existing customers can begin free trial.",
+            "date": "2026-01-07",
+            "source": "Press Release",
+            "url": "https://www.wolterskluwer.com/en/news/wolters-kluwer-launches-libra-legal-ai-workspace-in-the-netherlands",
+            "type": "features"
+          }
+        ],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Libra Expansion to Germany and Poland Following Netherlands Success",
+            "description": "Following the Netherlands launch on January 7, Wolters Kluwer integrated trusted legal content into Libra in Germany (mid-January) and announced Poland launch, marking pan-European expansion of the AI workspace.",
+            "date": "2026-01-20",
+            "source": "Press Release",
+            "url": "https://www.wolterskluwer.com/en/news/wolters-kluwer-advances-pan-european-expansion-of-libra",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
@@ -305,7 +531,16 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
+        "features": [
+          {
+            "title": "Della AI now Legisway Analyzer (acquired by Wolters Kluwer)",
+            "description": "Della AI is a leading artificial intelligence technology based on advanced natural language processing (NLP), which allows legal professionals to accelerate and simplify their reviews and audit of contracts through AI technology, in multiple languages. Founded in 2018, acquired by Wolters Kluwer in December 2022. Now integrated as 'Legisway Analyzer' - guides legal teams through robust process powered by AI to review contracts 4X as fast.",
+            "date": "2022-12-15",
+            "source": "Product",
+            "url": "https://www.wolterskluwer.com/en-gb/solutions/legisway/legisway-analyzer",
+            "type": "features"
+          }
+        ],
         "pricing": [],
         "news": []
       },
@@ -331,8 +566,26 @@
       "liveUpdates": {
         "twitter": [],
         "blog": [],
-        "features": [],
-        "pricing": [],
+        "features": [
+          {
+            "title": "🚀 AI Deep Dive Expands to UK, EU, and Canada",
+            "description": "On February 3, 2026, Everlaw expanded its AI Deep Dive feature to the UK, EU, and Canada. Deep Dive is powered by retrieval-augmented generation framework allowing legal professionals to ask natural-language questions and receive insights synthesized across entire document corpus without size limitations.",
+            "date": "2026-02-03",
+            "source": "Press Release",
+            "url": "https://www.everlaw.com/blog/everlaw-ai/deep-dive-expands-to-uk-eu-canada/",
+            "type": "features"
+          }
+        ],
+        "pricing": [
+          {
+            "title": "Everlaw Reduces AI Feature Pricing in February 2026",
+            "description": "In February 2026, Writing Assistant, Deposition Analyzer, and Single Document Review Assistant are now included at no additional cost with no per GB price increase. Everlaw also reduced the cost of its Coding Suggestions feature by 40%.",
+            "date": "2026-02-01",
+            "source": "Pricing",
+            "url": "https://www.everlaw.com/",
+            "type": "pricing"
+          }
+        ],
         "news": []
       },
       "roadmap": []
