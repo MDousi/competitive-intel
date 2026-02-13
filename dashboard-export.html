@@ -1,3 +1,166 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Intelligence Dashboard - 27 Concurrenten</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(to right, #e5e7eb 0%, #e5e7eb 65%, #f3e8ff 80%, #e9d5ff 100%);
+            color: #111827;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 6px solid #7c3aed;
+        }
+        h1 { color: #111827; font-size: 32px; margin-bottom: 10px; }
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .stat {
+            background: #f3f4f6;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .stat strong { color: #7c3aed; font-size: 20px; display: block; }
+        .competitors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 4px solid #7c3aed;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+        .badge {
+            display: inline-block;
+            background: #ede9fe;
+            color: #7c3aed;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .new-badge {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .website {
+            color: #7c3aed;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            margin: 8px 0;
+        }
+        .website:hover { text-decoration: underline; }
+        .update {
+            background: #f9fafb;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid #e5e7eb;
+            font-size: 13px;
+        }
+        .update:hover {
+            border-left-color: #7c3aed;
+            background: #faf5ff;
+        }
+        .update-title {
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+        .update-meta {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .filter-chips {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        .chip:hover {
+            border-color: #7c3aed;
+            background: #faf5ff;
+        }
+        .chip.active {
+            background: #7c3aed;
+            color: white;
+            border-color: #7c3aed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Competitive Intelligence Dashboard</h1>
+            <p style="color: #6b7280; margin-top: 8px;">Laatst bijgewerkt: 12 februari 2026</p>
+            <div class="stats">
+                <div class="stat"><strong>27</strong> Concurrenten</div>
+                <div class="stat"><strong>18</strong> EU Bedrijven</div>
+                <div class="stat"><strong>70+</strong> Updates (Jan-Feb 2026)</div>
+                <div class="stat"><strong>5</strong> Nieuw Toegevoegd</div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <strong>🌍 Filter op Land:</strong>
+            <div class="filter-chips" id="countryFilters"></div>
+        </div>
+
+        <div style="background: #f9fafb; padding: 12px 20px; border-radius: 10px; margin-bottom: 20px;">
+            Toont <strong id="count">27</strong> concurrenten
+        </div>
+
+        <div class="competitors-grid" id="grid"></div>
+    </div>
+
+    <script>
+const competitorData = 
 {
   "lastUpdated": "2026-02-12T15:00:00.000Z",
   "competitors": [
@@ -762,4 +925,87 @@
       "roadmap": []
     }
   ]
+};
+
+const newCompetitors = ['Alice', 'Legora', 'Noxtua', 'Lexroom', 'Kira Systems'];
+let activeCountries = [];
+
+function renderDashboard() {
+    const grid = document.getElementById('grid');
+    const countries = [...new Set(competitorData.competitors.map(c => c.country))].sort();
+    
+    // Country filters
+    const filterEl = document.getElementById('countryFilters');
+    countries.forEach(country => {
+        const chip = document.createElement('div');
+        chip.className = 'chip';
+        const count = competitorData.competitors.filter(c => c.country === country).length;
+        chip.textContent = `${country} (${count})`;
+        chip.onclick = () => {
+            chip.classList.toggle('active');
+            if (activeCountries.includes(country)) {
+                activeCountries = activeCountries.filter(c => c !== country);
+            } else {
+                activeCountries.push(country);
+            }
+            filterCards();
+        };
+        filterEl.appendChild(chip);
+    });
+
+    // Render competitors
+    competitorData.competitors.forEach(comp => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.country = comp.country;
+        
+        const allUpdates = [
+            ...(comp.liveUpdates.news || []),
+            ...(comp.liveUpdates.features || []),
+            ...(comp.liveUpdates.pricing || [])
+        ];
+        
+        const isNew = newCompetitors.includes(comp.name);
+        const newBadge = isNew ? '<span class="badge new-badge">🆕 NIEUW</span>' : '';
+        
+        card.innerHTML = `
+            <h3>${comp.name} ${newBadge}</h3>
+            <span class="badge">${comp.country}</span>
+            <a href="${comp.website}" target="_blank" class="website">${comp.website}</a>
+            <div style="margin-top: 12px; font-size: 13px; color: #6b7280;">
+                <strong>${allUpdates.length}</strong> updates
+            </div>
+            ${allUpdates.slice(0, 3).map(u => `
+                <div class="update">
+                    <div class="update-title">${u.title}</div>
+                    <div style="color: #6b7280; margin-top: 4px;">${u.description.substring(0, 120)}...</div>
+                    <div class="update-meta">${u.date} • ${u.source}</div>
+                </div>
+            `).join('')}
+            ${allUpdates.length > 3 ? `<div style="text-align: center; color: #7c3aed; margin-top: 10px; font-size: 12px;">+${allUpdates.length - 3} meer</div>` : ''}
+        `;
+        
+        grid.appendChild(card);
+    });
 }
+
+function filterCards() {
+    const cards = document.querySelectorAll('.card');
+    let visible = 0;
+    
+    cards.forEach(card => {
+        if (activeCountries.length === 0 || activeCountries.includes(card.dataset.country)) {
+            card.style.display = 'block';
+            visible++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    document.getElementById('count').textContent = visible;
+}
+
+renderDashboard();
+</script>
+</body>
+</html>
