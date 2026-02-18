@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T05:16:44.210Z",
+  "lastUpdated": "2026-02-18T14:36:55.204Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -86,6 +86,14 @@
         "twitter": [],
         "blog": [
           {
+            "title": "Rechtenstudenten studeren af zonder AI-vaardigheden, maar de praktijk verwacht die wél",
+            "description": "",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://legalmike.ai/nieuws/rechtenstudenten-studeren-af-zonder-ai-vaardigheden-maar-de-praktijk-verwacht-die-wel/",
+            "type": "blog"
+          },
+          {
             "title": "AI is overal in de juridische praktijk, maar de echte omslag moet nog beginnen",
             "description": "",
             "date": "Recent",
@@ -99,14 +107,6 @@
             "date": "Recent",
             "source": "Blog",
             "url": "https://legalmike.ai/nieuws/groeien-als-klein-advocatenkantoor-in-2026-waar-de-echte-winst-ligt/",
-            "type": "blog"
-          },
-          {
-            "title": "Vier toekomstbeelden voor werk in 2030: wat leiders nú al voelen aankomen",
-            "description": "",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://legalmike.ai/nieuws/vier-toekomstbeelden-voor-werk-in-2030-wat-leiders-nu-al-voelen-aankomen/",
             "type": "blog"
           }
         ],
