@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-19T05:15:10.342Z",
+  "lastUpdated": "2026-02-19T14:39:27.658Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -255,7 +255,16 @@
         "blog": [],
         "features": [],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Stella Legal and Ironclad Partner To Bridge the Gap Between CLM Investment and Business Outcomes",
+            "description": "Stella Legal and Ironclad's new partnership enables CLM implementation for service delivery across teams, built on Ironclad’s AI contracting platform....",
+            "date": "1 dag geleden",
+            "source": "GlobeNewswire",
+            "url": "https://www.globenewswire.com/news-release/2026/02/18/3240187/0/en/Stella-Legal-and-Ironclad-Partner-To-Bridge-the-Gap-Between-CLM-Investment-and-Business-Outcomes.html",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
