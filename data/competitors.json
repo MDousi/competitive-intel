@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-22T05:13:47.816Z",
+  "lastUpdated": "2026-02-22T13:55:48.991Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -84,32 +84,7 @@
       "website": "https://legalmike.ai",
       "liveUpdates": {
         "twitter": [],
-        "blog": [
-          {
-            "title": "Rechtenstudenten studeren af zonder AI-vaardigheden, maar de praktijk verwacht die wél",
-            "description": "",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://legalmike.ai/nieuws/rechtenstudenten-studeren-af-zonder-ai-vaardigheden-maar-de-praktijk-verwacht-die-wel/",
-            "type": "blog"
-          },
-          {
-            "title": "AI is overal in de juridische praktijk, maar de echte omslag moet nog beginnen",
-            "description": "",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://legalmike.ai/nieuws/ai-is-overal-in-de-juridische-praktijk-maar-de-echte-omslag-moet-nog-beginnen/",
-            "type": "blog"
-          },
-          {
-            "title": "Groeien als klein advocatenkantoor in 2026: waar de echte winst ligt",
-            "description": "",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://legalmike.ai/nieuws/groeien-als-klein-advocatenkantoor-in-2026-waar-de-echte-winst-ligt/",
-            "type": "blog"
-          }
-        ],
+        "blog": [],
         "features": [],
         "pricing": [],
         "news": []
