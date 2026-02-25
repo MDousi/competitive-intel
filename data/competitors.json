@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-24T15:11:56.057Z",
+  "lastUpdated": "2026-02-25T05:17:17.581Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -86,6 +86,14 @@
         "twitter": [],
         "blog": [
           {
+            "title": "Waarom AI juridische diensten niet automatisch goedkoper maakt",
+            "description": "",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://legalmike.ai/nieuws/waarom-ai-juridische-diensten-niet-automatisch-goedkoper-maakt/",
+            "type": "blog"
+          },
+          {
             "title": "Rechtenstudenten studeren af zonder AI-vaardigheden, maar de praktijk verwacht die wél",
             "description": "",
             "date": "Recent",
@@ -99,14 +107,6 @@
             "date": "Recent",
             "source": "Blog",
             "url": "https://legalmike.ai/nieuws/ai-is-overal-in-de-juridische-praktijk-maar-de-echte-omslag-moet-nog-beginnen/",
-            "type": "blog"
-          },
-          {
-            "title": "Groeien als klein advocatenkantoor in 2026: waar de echte winst ligt",
-            "description": "",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://legalmike.ai/nieuws/groeien-als-klein-advocatenkantoor-in-2026-waar-de-echte-winst-ligt/",
             "type": "blog"
           }
         ],
