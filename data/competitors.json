@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T14:33:36.793Z",
+  "lastUpdated": "2026-03-06T05:01:20.003Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -48,6 +48,14 @@
         "twitter": [],
         "blog": [
           {
+            "title": "Le nouveau volet “Contrôle, recouvrement et contentieux” vu par ses auteurs",
+            "description": "À l’occasion du lancement du nouveau volet Contrôle, recouvrement et contentieux de l’Encyclopédie fiscale, Doctrine a donné la parole aux auteurs. Leurs témoignages éclairent l’ambition éditoriale du",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://blog.doctrine.fr/le-nouveau-volet-controle-recouvrement-et-contentieux-vu-par-ses-auteurs/",
+            "type": "blog"
+          },
+          {
             "title": "Bilan carbone Doctrine : découpler croissance et émissions.",
             "description": "Doctrine renouvelle son bilan carbone en 2024. Résultat : des émissions en hausse (normal pour une entreprise en hyper croissance), mais une intensité carbone en baisse de 12 %. Un bilan qui illustre ",
             "date": "Recent",
@@ -61,14 +69,6 @@
             "date": "Recent",
             "source": "Blog",
             "url": "https://blog.doctrine.fr/doctrine-lance-la-traduction-juridique-securisee-et-integree-pour-les-professionnels-du-droit/",
-            "type": "blog"
-          },
-          {
-            "title": "L’Encyclopédie fiscale s’enrichit d’un nouveau volet dédié au contrôle, au recouvrement et au contentieux",
-            "description": "Le Fiscal by Doctrine poursuit son développement avec le lancement d’un 3e volet de son Encyclopédie fiscale, dédié au contrôle, au recouvrement et au contentieux. Ce nouveau volume propose une doctri",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://blog.doctrine.fr/lencyclopedie-fiscale-senrichit-dun-nouveau-volet-dedie-au-controle-au-recouvrement-et-au-contentieux/",
             "type": "blog"
           }
         ],
