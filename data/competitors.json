@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-09T05:12:51.480Z",
+  "lastUpdated": "2026-03-09T14:40:14.453Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -48,6 +48,14 @@
         "twitter": [],
         "blog": [
           {
+            "title": "Doctrine annonce une nouvelle intégration avec Google Drive pour connecter l’IA juridique à votre base documentaire",
+            "description": "Après SharePoint, Doctrine annonce une nouvelle intégration avec Google Drive, poursuivant son ambition : s’intégrer pleinement dans l’environnement de travail des juristes. Word pour rédiger, SharePo",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://blog.doctrine.fr/doctrine-annonce-une-nouvelle-integration-avec-google-drive-pour-connecter-lia-juridique-a-votre-base-documentaire/",
+            "type": "blog"
+          },
+          {
             "title": "Le nouveau volet “Contrôle, recouvrement et contentieux” vu par ses auteurs",
             "description": "À l’occasion du lancement du nouveau volet Contrôle, recouvrement et contentieux de l’Encyclopédie fiscale, Doctrine a donné la parole aux auteurs. Leurs témoignages éclairent l’ambition éditoriale du",
             "date": "Recent",
@@ -61,14 +69,6 @@
             "date": "Recent",
             "source": "Blog",
             "url": "https://blog.doctrine.fr/bilan-carbone-doctrine-2024/",
-            "type": "blog"
-          },
-          {
-            "title": "Doctrine lance la traduction juridique sécurisée et intégrée pour les professionnels du droit",
-            "description": "Doctrine lance la traduction juridique sécurisée et intégrée pour les professionnels du droit, une alternative de confiance aux outils en ligne grand public.",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://blog.doctrine.fr/doctrine-lance-la-traduction-juridique-securisee-et-integree-pour-les-professionnels-du-droit/",
             "type": "blog"
           }
         ],
