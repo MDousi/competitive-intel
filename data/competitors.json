@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-25T02:08:47.865Z",
+  "lastUpdated": "2026-03-25T13:10:10.368Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -48,6 +48,14 @@
         "twitter": [],
         "blog": [
           {
+            "title": "Doctrine déploie son IA juridique au Luxembourg",
+            "description": "Jurisprudence rare et fragmentée, dossiers transfrontaliers, recours constant au droit comparé : le Luxembourg est un marché juridique exigeant. Avec l’intégration de milliers de décisions luxembourge",
+            "date": "Recent",
+            "source": "Blog",
+            "url": "https://blog.doctrine.fr/doctrine-deploie-son-ia-juridique-au-luxembourg/",
+            "type": "blog"
+          },
+          {
             "title": "Doctrine annonce une nouvelle intégration avec Google Drive pour connecter l’IA juridique à votre base documentaire",
             "description": "Après SharePoint, Doctrine annonce une nouvelle intégration avec Google Drive, poursuivant son ambition : s’intégrer pleinement dans l’environnement de travail des juristes. Word pour rédiger, SharePo",
             "date": "Recent",
@@ -61,14 +69,6 @@
             "date": "Recent",
             "source": "Blog",
             "url": "https://blog.doctrine.fr/le-nouveau-volet-controle-recouvrement-et-contentieux-vu-par-ses-auteurs/",
-            "type": "blog"
-          },
-          {
-            "title": "Bilan carbone Doctrine : découpler croissance et émissions.",
-            "description": "Doctrine renouvelle son bilan carbone en 2024. Résultat : des émissions en hausse (normal pour une entreprise en hyper croissance), mais une intensité carbone en baisse de 12 %. Un bilan qui illustre ",
-            "date": "Recent",
-            "source": "Blog",
-            "url": "https://blog.doctrine.fr/bilan-carbone-doctrine-2024/",
             "type": "blog"
           }
         ],
