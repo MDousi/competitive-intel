@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-26T13:15:38.748Z",
+  "lastUpdated": "2026-03-27T02:23:36.792Z",
   "competitors": [
     {
       "name": "Zeno",
@@ -23,7 +23,24 @@
         "blog": [],
         "features": [],
         "pricing": [],
-        "news": []
+        "news": [
+          {
+            "title": "Legal AI startup Harvey valued at $11B in new $200M round",
+            "description": "Harvey AI Inc., a developer of artificial intelligence tools for legal professionals, today announced that it has closed a $200 million Series C investment. The deal was jointly led by returning backers GIC and Sequoia. The latter firm also co-led Harvey’s pr…",
+            "date": "1 dag geleden",
+            "source": "SiliconANGLE News",
+            "url": "https://siliconangle.com/2026/03/25/legal-ai-startup-harvey-valued-11b-new-200m-round/",
+            "type": "news"
+          },
+          {
+            "title": "Legal AI startup Harvey valued at $11B in new $250M round",
+            "description": "Harvey AI Inc., a developer of artificial intelligence tools for legal professionals, today announced that it has closed a $250 million Series C investment. The deal was jointly led by returning backers GIC and Sequoia. The latter firm also co-led Harvey’s pr…",
+            "date": "1 dag geleden",
+            "source": "SiliconANGLE News",
+            "url": "https://siliconangle.com/2026/03/25/legal-ai-startup-harvey-valued-11b-new-250m-round/",
+            "type": "news"
+          }
+        ]
       },
       "roadmap": []
     },
